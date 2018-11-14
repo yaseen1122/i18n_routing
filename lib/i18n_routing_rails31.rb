@@ -260,9 +260,9 @@ module I18nRouting
 
     # Alias methods in order to handle i18n routes
     def self.included(mod)
-      mod.send :alias_method_chain, :initialize, :i18n_routing
-      mod.send :alias_method_chain, :resource, :i18n_routing
-      mod.send :alias_method_chain, :resources, :i18n_routing
+      mod.send :alias_method, :initialize, :i18n_routing
+      mod.send :alias_method, :resource, :i18n_routing
+      mod.send :alias_method, :resources, :i18n_routing
 
       # Here we redefine some methods, in order to handle
       # correct path_names translation on the fly
@@ -289,7 +289,7 @@ module I18nRouting
           send(rfname, *args, &block)
         end
 
-        mod.send :alias_method_chain, m, :i18n_routing
+        mod.send :alias_method, m, :i18n_routing
       end
     end
 
@@ -392,8 +392,8 @@ module I18nRouting
   module RackMountRoute
     # Alias methods in order to handle i18n routes
     def self.included(mod)
-      mod.send :alias_method_chain, :generate, :i18n_routing
-      mod.send :alias_method_chain, :initialize, :i18n_routing
+      mod.send :alias_method, :generate, :i18n_routing
+      mod.send :alias_method, :initialize, :i18n_routing
     end
 
     # During route initialization, if a condition i18n_locale is present
