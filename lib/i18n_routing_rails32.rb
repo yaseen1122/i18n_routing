@@ -259,7 +259,7 @@ module I18nRouting
 
     # Alias methods in order to handle i18n routes
     def self.included(mod)
-      mod.send :alias_method, :initialize, :i18n_routing
+      mod.send :alias_method_chain, :initialize, :i18n_routing
       mod.send :alias_method, :resource, :i18n_routing
       mod.send :alias_method, :resources, :i18n_routing
 
